@@ -3,11 +3,14 @@ import mongoose from 'mongoose'
 import 'dotenv/config'
 import tasksroutes from './routes/tasks.js'
 import userrouter from './routes/user.js'
+import cors from 'cors'
 
 const PORT = process.env.PORT || 5000
 const app = express()
+
 app.use(express.json())
 
+app.use(cors({origin:'*'}))
 
 mongoose.connect(process.env.MONGODB_URI)
 .then(()=>console.log("MONGODB Connected"))
